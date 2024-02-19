@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            border: 0;
+            font-family:cursive;
+        }
+        body{
+            background-color: skyblue;
+            
+        }
+        section{
+
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 3px 3px rgba(0, 0, 0, 0.363);
+            width: 350px;
+        }
+        h1{
+            background: burlywood;
+            
+        }
+        #container{
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1 id="saude">Hora do dia</h1>
+        <div id="container">
+            <span id="msg">Hora</span>
+            <div>
+                <img id="img" src="img/dia.jpg" alt="">
+            </div>
+        </div>
+    </section>    
+
+    <script>
+        function dia() {
+            let hora = new Date();
+            let time = window.document.getElementById("msg");
+            let saude = document.getElementById("saude");
+            let img = document.getElementById("img");
+            let h=hora.getHours()
+            time.innerText = hora.toLocaleTimeString();
+            setTimeout(dia, 1000);
+            if (h >= 0 && h < 12) {
+                saude.innerText = 'Bom dia';
+                img.src='img/dia.jpg'
+                document.body.style.background= '#de8c20'
+            } else if( h >=18 && h < 24) {
+                saude.innerText = 'Boa noite';
+                document.body.style.background= '#1c232d'
+                img.src='img/noite.jpg'
+                 let j=String(h)
+            } else{
+                saude.innerText = 'Boa tarde';
+                document.body.style.background= '#fcc254'
+                img.src='img/tarde.jpg'
+            }
+           
+        }
+    
+        window.onload = dia;
+    </script>
+</body>
+</html>
